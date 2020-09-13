@@ -11,7 +11,7 @@ type LoginService struct {
 }
 
 func (ls *LoginService) Login(ctx context.Context, req *proto_user.LoginRequest, resp *proto_user.LoginResponse) error {
-	_, err := database.LoginCheck(req.Name, req.Pass)
+	user, err := database.LoginCheck(req.Name, req.Pass)
 	if err != nil {
 		logger.Error("LoginCheck: %s", err)
 		resp.Code = 123
@@ -20,6 +20,6 @@ func (ls *LoginService) Login(ctx context.Context, req *proto_user.LoginRequest,
 	}
 
 	resp.Message = "ok"
-	resp.Token = "fake token"
+	resp.Id = int32(user.ID)
 	return nil
 }

@@ -11,7 +11,7 @@ message LoginRequest {
 message LoginResponse {
   int32 code = 1;
   string message = 2;
-  string token = 3;
+  int32 id = 3;
 }
 
 service LoginService {

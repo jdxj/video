@@ -16,3 +16,5 @@ service:
 
 server:
   port: 8080
+  path: .
+  secret: 123456

@@ -1,6 +1,7 @@
 package service
 
 import (
+	"video/cmd/video/other"
 	"video/cmd/video/router"
 	"video/config"
 	"video/database"
@@ -8,16 +9,11 @@ import (
 	proto_user "video/proto/user"
 
 	"github.com/micro/cli/v2"
-
 	"github.com/micro/go-micro/v2"
 )
 
 const (
 	Name = "video"
-)
-
-var (
-	LoginService proto_user.LoginService
 )
 
 func StartService() {
@@ -39,7 +35,7 @@ func StartService() {
 		micro.BeforeStop(router.StopServer),
 	)
 
-	LoginService = proto_user.NewLoginService("user", service.Client())
+	other.LoginService = proto_user.NewLoginService("user", service.Client())
 
 	if err := service.Run(); err != nil {
 		logger.Error("Run: %s", err)

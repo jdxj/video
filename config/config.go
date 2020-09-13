@@ -41,7 +41,9 @@ type service struct {
 }
 
 type server struct {
-	Port string `yaml:"port"`
+	Port   string `yaml:"port"`
+	Path   string `yaml:"path"`
+	Secret string `yaml:"secret"`
 }
 
 func Init(path string) error {
