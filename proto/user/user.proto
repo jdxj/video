@@ -1,0 +1,34 @@
+syntax = "proto3";
+
+package proto_user;
+
+// 登录
+message LoginRequest {
+  string name = 1;
+  string pass = 2;
+}
+
+message LoginResponse {
+  int32 code = 1;
+  string message = 2;
+  string token = 3;
+}
+
+service LoginService {
+  rpc Login (LoginRequest) returns (LoginResponse) {}
+}
+
+// 注册
+message RegisterRequest {
+  LoginRequest login = 1;
+  string email = 2;
+}
+
+message RegisterResponse {
+  int32 code = 1;
+  string message = 2;
+}
+
+service RegisterService {
+  rpc Register (RegisterRequest) returns (RegisterResponse) {}
+}

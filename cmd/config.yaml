@@ -1,0 +1,18 @@
+db:
+  host: 127.0.0.1:3306
+  user: root
+  pass: 123456
+  base: video
+
+log:
+  path: video.log
+  max_size: 1024
+  max_backups: 10
+  max_age: 10
+
+mod: debug
+
+service:
+
+server:
+  port: 8080
