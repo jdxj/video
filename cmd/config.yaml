@@ -16,5 +16,5 @@ service:
 
 server:
   port: 8080
-  path: .
+  path: assets
   secret: 123456

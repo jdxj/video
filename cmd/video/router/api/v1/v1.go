@@ -3,12 +3,12 @@ package v1
 import (
 	"net/http"
 	"strings"
+
 	"video/cmd/video/router/api"
 	"video/config"
 	"video/logger"
 
 	"github.com/dgrijalva/jwt-go"
-
 	"github.com/gin-gonic/gin"
 )
 
@@ -21,6 +21,7 @@ func RegisterAPI(r *gin.RouterGroup) {
 	v1Group.Use(CheckLogin)
 	{
 		v1Group.GET("", Home)
+		v1Group.Static("assets", config.Server.Path)
 	}
 
 	// v1/videos
@@ -44,6 +45,7 @@ func CheckLogin(c *gin.Context) {
 	uc := &api.UserClaims{}
 	_, err := jwt.ParseWithClaims(tokenStr, uc, KeyFunc)
 	if err != nil {
+		logger.Debug("token: %s", tokenStr)
 		logger.Error("ParseWithClaims: %s", err)
 		resp := api.NewResponse(123, "invalid token", nil)
 		c.AbortWithStatusJSON(http.StatusBadRequest, resp)
