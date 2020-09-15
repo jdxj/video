@@ -4,9 +4,9 @@ import (
 	"net/http"
 	"path/filepath"
 
-	"github.com/jdxj/video/cmd/video/router/api"
 	"github.com/jdxj/video/config"
 	"github.com/jdxj/video/logger"
+	"github.com/jdxj/video/video/server/api"
 
 	"github.com/gin-gonic/gin"
 )

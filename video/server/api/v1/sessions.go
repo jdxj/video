@@ -4,10 +4,10 @@ import (
 	"context"
 	"net/http"
 
-	"github.com/jdxj/video/cmd/video/other"
-	"github.com/jdxj/video/cmd/video/router/api"
 	"github.com/jdxj/video/logger"
-	proto_user "github.com/jdxj/video/proto/user"
+	pb_user "github.com/jdxj/video/user/proto"
+	"github.com/jdxj/video/video/server"
+	"github.com/jdxj/video/video/server/api"
 
 	"github.com/dgrijalva/jwt-go"
 	"github.com/gin-gonic/gin"
@@ -23,11 +23,11 @@ func AddSession(c *gin.Context) {
 		return
 	}
 
-	loginReq := &proto_user.LoginRequest{
+	loginReq := &pb_user.LoginRequest{
 		Name: user.Name,
 		Pass: user.Password,
 	}
-	loginResp, err := other.LoginService.Login(context.TODO(), loginReq)
+	loginResp, err := server.LoginService.Login(context.TODO(), loginReq)
 	if err != nil {
 		logger.Error("Login: %s", err)
 		resp := api.NewResponse(123, "invalid param", nil)

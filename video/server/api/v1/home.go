@@ -3,7 +3,7 @@ package v1
 import (
 	"net/http"
 
-	"github.com/jdxj/video/cmd/video/router/api"
+	"github.com/jdxj/video/video/server/api"
 
 	"github.com/gin-gonic/gin"
 )

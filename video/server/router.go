@@ -1,8 +1,8 @@
-package router
+package server
 
 import (
-	v1 "github.com/jdxj/video/cmd/video/router/api/v1"
 	"github.com/jdxj/video/config"
+	v1 "github.com/jdxj/video/video/server/api/v1"
 
 	"github.com/gin-gonic/gin"
 )
