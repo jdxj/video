@@ -3,8 +3,9 @@ package database
 import (
 	"database/sql"
 	"fmt"
-	"video/config"
-	"video/logger"
+
+	"github.com/jdxj/video/config"
+	"github.com/jdxj/video/logger"
 
 	_ "github.com/go-sql-driver/mysql"
 )

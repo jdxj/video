@@ -1,12 +1,12 @@
 package service
 
 import (
-	"video/cmd/video/other"
-	"video/cmd/video/router"
-	"video/config"
-	"video/database"
-	"video/logger"
-	proto_user "video/proto/user"
+	"github.com/jdxj/video/cmd/video/other"
+	"github.com/jdxj/video/cmd/video/router"
+	"github.com/jdxj/video/config"
+	"github.com/jdxj/video/database"
+	"github.com/jdxj/video/logger"
+	proto_user "github.com/jdxj/video/proto/user"
 
 	"github.com/micro/cli/v2"
 	"github.com/micro/go-micro/v2"

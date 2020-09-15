@@ -2,7 +2,8 @@ package logger
 
 import (
 	"os"
-	"video/config"
+
+	"github.com/jdxj/video/config"
 
 	"go.uber.org/zap"
 	"go.uber.org/zap/zapcore"

@@ -1,8 +1,8 @@
 package router
 
 import (
-	v1 "video/cmd/video/router/api/v1"
-	"video/config"
+	v1 "github.com/jdxj/video/cmd/video/router/api/v1"
+	"github.com/jdxj/video/config"
 
 	"github.com/gin-gonic/gin"
 )

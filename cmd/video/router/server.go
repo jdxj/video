@@ -5,8 +5,9 @@ import (
 	"fmt"
 	"net/http"
 	"time"
-	"video/config"
-	"video/logger"
+
+	"github.com/jdxj/video/config"
+	"github.com/jdxj/video/logger"
 )
 
 var (

@@ -3,9 +3,10 @@ package v1
 import (
 	"net/http"
 	"path/filepath"
-	"video/cmd/video/router/api"
-	"video/config"
-	"video/logger"
+
+	"github.com/jdxj/video/cmd/video/router/api"
+	"github.com/jdxj/video/config"
+	"github.com/jdxj/video/logger"
 
 	"github.com/gin-gonic/gin"
 )

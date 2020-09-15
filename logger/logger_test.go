@@ -3,7 +3,8 @@ package logger
 import (
 	"fmt"
 	"testing"
-	"video/config"
+
+	"github.com/jdxj/video/config"
 )
 
 func TestInit(t *testing.T) {

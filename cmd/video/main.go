@@ -1,7 +1,7 @@
 package main
 
 import (
-	"video/cmd/video/service"
+	"github.com/jdxj/video/cmd/video/service"
 )
 
 func main() {

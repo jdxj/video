@@ -1,4 +1,4 @@
-module video
+module github.com/jdxj/video
 
 go 1.15
 

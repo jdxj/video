@@ -1,6 +1,6 @@
 package main
 
-import "video/cmd/user/service"
+import "github.com/jdxj/video/cmd/user/service"
 
 func main() {
 	service.StartService()

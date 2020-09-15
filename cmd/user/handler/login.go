@@ -2,9 +2,10 @@ package handler
 
 import (
 	"context"
-	"video/database"
-	"video/logger"
-	proto_user "video/proto/user"
+
+	"github.com/jdxj/video/database"
+	"github.com/jdxj/video/logger"
+	proto_user "github.com/jdxj/video/proto/user"
 )
 
 type LoginService struct {

@@ -3,10 +3,11 @@ package v1
 import (
 	"context"
 	"net/http"
-	"video/cmd/video/other"
-	"video/cmd/video/router/api"
-	"video/logger"
-	proto_user "video/proto/user"
+
+	"github.com/jdxj/video/cmd/video/other"
+	"github.com/jdxj/video/cmd/video/router/api"
+	"github.com/jdxj/video/logger"
+	proto_user "github.com/jdxj/video/proto/user"
 
 	"github.com/dgrijalva/jwt-go"
 	"github.com/gin-gonic/gin"

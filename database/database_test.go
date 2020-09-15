@@ -3,7 +3,8 @@ package database
 import (
 	"fmt"
 	"testing"
-	"video/config"
+
+	"github.com/jdxj/video/config"
 )
 
 func init() {
