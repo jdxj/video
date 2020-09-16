@@ -10,9 +10,8 @@ require (
 	github.com/dgrijalva/jwt-go v3.2.0+incompatible
 	github.com/gin-gonic/gin v1.6.3
 	github.com/go-sql-driver/mysql v1.5.0
+	github.com/jdxj/logger v0.0.0-20200916123516-154aef159432
 	github.com/jdxj/user v0.0.0-20200916102123-2ec94dfa8600
 	github.com/micro/micro/v3 v3.0.0-beta.4
-	go.uber.org/zap v1.16.0
-	gopkg.in/natefinch/lumberjack.v2 v2.0.0
 	gopkg.in/yaml.v2 v2.3.0
 )

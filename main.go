@@ -1,8 +1,8 @@
 package main
 
 import (
+	"github.com/jdxj/logger"
 	"github.com/jdxj/video/config"
-	"github.com/jdxj/video/logger"
 	"github.com/jdxj/video/model"
 	"github.com/jdxj/video/server"
 )

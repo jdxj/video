@@ -4,7 +4,7 @@ import (
 	"net/http"
 	"path/filepath"
 
-	"github.com/jdxj/video/logger"
+	"github.com/jdxj/logger"
 	"github.com/jdxj/video/server/api"
 
 	"github.com/gin-gonic/gin"

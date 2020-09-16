@@ -6,8 +6,8 @@ import (
 	"net/http"
 	"time"
 
+	"github.com/jdxj/logger"
 	"github.com/jdxj/video/config"
-	"github.com/jdxj/video/logger"
 )
 
 var (
