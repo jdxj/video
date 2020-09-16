@@ -4,7 +4,7 @@ import (
 	"github.com/jdxj/logger"
 	"github.com/jdxj/video/config"
 	"github.com/jdxj/video/model"
-	"github.com/jdxj/video/server"
+	"github.com/jdxj/video/service"
 )
 
 func main() {
@@ -21,5 +21,5 @@ func main() {
 		panic(err)
 	}
 
-	server.InitRemoteService()
+	service.InitRemoteService()
 }
