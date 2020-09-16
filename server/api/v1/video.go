@@ -4,9 +4,8 @@ import (
 	"net/http"
 	"path/filepath"
 
-	"github.com/jdxj/video/config"
 	"github.com/jdxj/video/logger"
-	"github.com/jdxj/video/video/server/api"
+	"github.com/jdxj/video/server/api"
 
 	"github.com/gin-gonic/gin"
 )
@@ -27,7 +26,7 @@ func UploadVideo(c *gin.Context) {
 	// todo: 对 file name 进行安全处理
 	err = c.SaveUploadedFile(
 		file,
-		filepath.Join(config.Server.Path, file.Filename),
+		filepath.Join(".", file.Filename),
 	)
 	if err != nil {
 		logger.Error("SaveUploadedFile: %s", err)

@@ -4,11 +4,11 @@ import (
 	"net/http"
 	"strings"
 
+	"github.com/dgrijalva/jwt-go"
 	"github.com/jdxj/video/config"
 	"github.com/jdxj/video/logger"
-	"github.com/jdxj/video/video/server/api"
+	"github.com/jdxj/video/server/api"
 
-	"github.com/dgrijalva/jwt-go"
 	"github.com/gin-gonic/gin"
 )
 

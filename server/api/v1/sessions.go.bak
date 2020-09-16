@@ -4,12 +4,12 @@ import (
 	"context"
 	"net/http"
 
+	"github.com/dgrijalva/jwt-go"
 	"github.com/jdxj/video/logger"
 	pb_user "github.com/jdxj/video/user/proto"
 	"github.com/jdxj/video/video/server"
 	"github.com/jdxj/video/video/server/api"
 
-	"github.com/dgrijalva/jwt-go"
 	"github.com/gin-gonic/gin"
 )
 

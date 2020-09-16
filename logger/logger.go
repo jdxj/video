@@ -3,8 +3,6 @@ package logger
 import (
 	"os"
 
-	"github.com/jdxj/video/config"
-
 	"go.uber.org/zap"
 	"go.uber.org/zap/zapcore"
 	"gopkg.in/natefinch/lumberjack.v2"
@@ -14,27 +12,26 @@ var (
 	sugar *zap.SugaredLogger
 )
 
-func Init() {
+func Init(path, mode string) {
 	core := zapcore.NewCore(
-		encoder(),
-		syncer(),
-		level(),
+		encoder(mode),
+		syncer(path, mode),
+		level(mode),
 	)
 	sugar = zap.New(core).Sugar()
 }
 
-func syncer() zapcore.WriteSyncer {
-	switch config.Mod {
+func syncer(path, mode string) zapcore.WriteSyncer {
+	switch mode {
 	case "debug":
 		return zapcore.AddSync(os.Stdout)
 
 	case "release":
-		log := config.Log
 		rotation := &lumberjack.Logger{
-			Filename:   log.Path,
-			MaxSize:    log.MaxSize,
-			MaxAge:     log.MaxAge,
-			MaxBackups: log.MaxBackups,
+			Filename:   path,
+			MaxSize:    100,
+			MaxAge:     30,
+			MaxBackups: 10,
 			LocalTime:  false,
 			Compress:   false,
 		}
@@ -43,8 +40,8 @@ func syncer() zapcore.WriteSyncer {
 	return nil
 }
 
-func encoder() zapcore.Encoder {
-	switch config.Mod {
+func encoder(mode string) zapcore.Encoder {
+	switch mode {
 	case "debug":
 		return zapcore.NewConsoleEncoder(zap.NewDevelopmentEncoderConfig())
 
@@ -54,8 +51,8 @@ func encoder() zapcore.Encoder {
 	return nil
 }
 
-func level() zapcore.Level {
-	switch config.Mod {
+func level(mode string) zapcore.Level {
+	switch mode {
 	case "release":
 		return zap.InfoLevel
 	}

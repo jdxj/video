@@ -15,9 +15,10 @@ var (
 )
 
 func initServer() {
+	serverCfg := config.Server()
 	server = &http.Server{
-		Addr:    fmt.Sprintf("%s:%s", "127.0.0.1", config.Server.Port),
-		Handler: NewRouter(),
+		Addr: fmt.Sprintf("%s:%s", "127.0.0.1", serverCfg.Port),
+		//Handler: NewRouter(),
 	}
 }
 

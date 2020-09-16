@@ -1,4 +1,4 @@
-package database
+package model
 
 type Video struct {
 	ID     int

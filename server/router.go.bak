@@ -2,7 +2,7 @@ package server
 
 import (
 	"github.com/jdxj/video/config"
-	v1 "github.com/jdxj/video/video/server/api/v1"
+	v1 "github.com/jdxj/video/server/api/v1"
 
 	"github.com/gin-gonic/gin"
 )

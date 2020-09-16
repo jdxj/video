@@ -7,43 +7,47 @@ import (
 )
 
 var (
-	DB  db
-	Mod string
-	Log log
-
-	Service service
-	Server  server
+	cfg *configuration
 )
 
-type all struct {
-	DB      db      `yaml:"db"`
-	Log     log     `yaml:"log"`
-	Mod     string  `yaml:"mod"`
-	Service service `yaml:"service"`
-	Server  server  `yaml:"server"`
+func DB() db {
+	return *cfg.DB
+}
+
+func Log() log {
+	return *cfg.Log
+}
+
+func Mode() string {
+	return *cfg.Mode
+}
+
+func Server() server {
+	return *cfg.Server
+}
+
+type configuration struct {
+	DB     *db     `yaml:"db"`
+	Log    *log    `yaml:"log"`
+	Mode   *string `yaml:"mode"`
+	Server *server `yaml:"server"`
 }
 
 type db struct {
-	Host string `yaml:"host"`
-	User string `yaml:"user"`
-	Pass string `yaml:"pass"`
-	Base string `yaml:"base"`
+	Host     string `yaml:"host"`
+	User     string `yaml:"user"`
+	Password string `yaml:"password"`
+	DBName   string `yaml:"dbname"`
 }
 
 type log struct {
-	Path       string `yaml:"path"`
-	MaxSize    int    `yaml:"max_size"`
-	MaxBackups int    `yaml:"max_backups"`
-	MaxAge     int    `yaml:"max_age"`
-}
-
-type service struct {
+	Path string `yaml:"path"`
 }
 
 type server struct {
-	Port   string `yaml:"port"`
-	Path   string `yaml:"path"`
-	Secret string `yaml:"secret"`
+	Port       string `yaml:"port"`
+	AssetsPath string `yaml:"assets_path"`
+	Secret     string `yaml:"secret"`
 }
 
 func Init(path string) error {
@@ -54,18 +58,6 @@ func Init(path string) error {
 	defer file.Close()
 
 	decoder := yaml.NewDecoder(file)
-	a := &all{}
-	err = decoder.Decode(a)
-	if err != nil {
-		return err
-	}
-
-	DB = a.DB
-	Log = a.Log
-	Mod = a.Mod
-
-	Service = a.Service
-	Server = a.Server
-
-	return nil
+	cfg = &configuration{}
+	return decoder.Decode(cfg)
 }
