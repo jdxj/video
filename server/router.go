@@ -8,7 +8,7 @@ import (
 )
 
 func NewRouter() *gin.Engine {
-	gin.SetMode(config.Mod)
+	gin.SetMode(config.Mode())
 	r := gin.Default()
 	r.MaxMultipartMemory = 8 << 20
 

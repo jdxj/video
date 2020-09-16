@@ -5,17 +5,17 @@ import (
 	"net/http"
 
 	"github.com/dgrijalva/jwt-go"
-	"github.com/jdxj/video/logger"
-	pb_user "github.com/jdxj/video/user/proto"
-	"github.com/jdxj/video/video/server"
-	"github.com/jdxj/video/video/server/api"
+	"github.com/jdxj/logger"
+	user "github.com/jdxj/user/proto"
+	"github.com/jdxj/video/server"
+	"github.com/jdxj/video/server/api"
 
 	"github.com/gin-gonic/gin"
 )
 
 func AddSession(c *gin.Context) {
-	user := new(api.User)
-	err := c.ShouldBind(user)
+	loginInfo := new(api.User)
+	err := c.ShouldBind(loginInfo)
 	if err != nil {
 		logger.Error("ShouldBind: %s", err)
 		resp := api.NewResponse(123, "invalid param", nil)
@@ -23,11 +23,11 @@ func AddSession(c *gin.Context) {
 		return
 	}
 
-	loginReq := &pb_user.LoginRequest{
-		Name: user.Name,
-		Pass: user.Password,
+	req := &user.RequestLogin{
+		Name:     loginInfo.Name,
+		Password: loginInfo.Password,
 	}
-	loginResp, err := server.LoginService.Login(context.TODO(), loginReq)
+	loginResp, err := server.UserService.Login(context.TODO(), req)
 	if err != nil {
 		logger.Error("Login: %s", err)
 		resp := api.NewResponse(123, "invalid param", nil)
@@ -41,7 +41,7 @@ func AddSession(c *gin.Context) {
 		return
 	}
 
-	uc := api.NewUserClaims(int(loginResp.Id), user.Name)
+	uc := api.NewUserClaims(int(loginResp.UserId), loginInfo.Name)
 	token := jwt.NewWithClaims(jwt.SigningMethodHS256, uc)
 	secret, _ := KeyFunc(nil)
 	ss, err := token.SignedString(secret)

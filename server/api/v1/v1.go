@@ -5,8 +5,8 @@ import (
 	"strings"
 
 	"github.com/dgrijalva/jwt-go"
+	"github.com/jdxj/logger"
 	"github.com/jdxj/video/config"
-	"github.com/jdxj/video/logger"
 	"github.com/jdxj/video/server/api"
 
 	"github.com/gin-gonic/gin"
@@ -21,7 +21,7 @@ func RegisterAPI(r *gin.RouterGroup) {
 	v1Group.Use(CheckLogin)
 	{
 		v1Group.GET("", Home)
-		v1Group.Static("assets", config.Server.Path)
+		v1Group.Static("assets", config.Server().AssetsPath)
 	}
 
 	// v1/videos
@@ -61,5 +61,5 @@ func ExtractToken(tok string) string {
 }
 
 func KeyFunc(token *jwt.Token) (interface{}, error) {
-	return []byte(config.Server.Secret), nil
+	return []byte(config.Server().Secret), nil
 }
