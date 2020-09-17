@@ -13,7 +13,7 @@ import (
 func UploadVideo(c *gin.Context) {
 	file, err := c.FormFile("file")
 	if err != nil {
-		logger.Error("FormFile: %s", err)
+		logger.Errorf("FormFile: %s", err)
 		resp := &api.Response{
 			Code:    123,
 			Message: "invalid param",
@@ -29,7 +29,7 @@ func UploadVideo(c *gin.Context) {
 		filepath.Join(".", file.Filename),
 	)
 	if err != nil {
-		logger.Error("SaveUploadedFile: %s", err)
+		logger.Errorf("SaveUploadedFile: %s", err)
 		resp := &api.Response{
 			Code:    123,
 			Message: "can not save file",

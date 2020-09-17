@@ -13,7 +13,7 @@ func main() {
 		panic(err)
 	}
 
-	logger.Init(config.Log().Path, config.Mode())
+	logger.NewPathMode(config.Log().Path, config.Mode())
 
 	dbCfg := config.DB()
 	err = model.InitDB(dbCfg.User, dbCfg.Password, dbCfg.Host, dbCfg.DBName)

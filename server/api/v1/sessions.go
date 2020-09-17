@@ -17,7 +17,7 @@ func AddSession(c *gin.Context) {
 	loginInfo := new(api.User)
 	err := c.ShouldBind(loginInfo)
 	if err != nil {
-		logger.Error("ShouldBind: %s", err)
+		logger.Errorf("ShouldBind: %s", err)
 		resp := api.NewResponse(123, "invalid param", nil)
 		c.JSON(http.StatusBadRequest, resp)
 		return
@@ -29,7 +29,7 @@ func AddSession(c *gin.Context) {
 	}
 	loginResp, err := service.UserService.Login(context.TODO(), req)
 	if err != nil {
-		logger.Error("Login: %s", err)
+		logger.Errorf("Login: %s", err)
 		resp := api.NewResponse(123, "invalid param", nil)
 		c.JSON(http.StatusInternalServerError, resp)
 		return
@@ -46,7 +46,7 @@ func AddSession(c *gin.Context) {
 	secret, _ := KeyFunc(nil)
 	ss, err := token.SignedString(secret)
 	if err != nil {
-		logger.Error("SignedString: %s", err)
+		logger.Errorf("SignedString: %s", err)
 		resp := api.NewResponse(123, "invalid param", nil)
 		c.JSON(http.StatusInternalServerError, resp)
 		return

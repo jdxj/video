@@ -39,7 +39,7 @@ func Te() {
 	}
 	resp, err := UserService.Login(context.TODO(), req)
 	if err != nil {
-		logger.Error("Login: %s", err)
+		logger.Errorf("Login: %s", err)
 	}
 	fmt.Printf("%#v\n", resp)
 }

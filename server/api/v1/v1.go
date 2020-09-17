@@ -45,8 +45,8 @@ func CheckLogin(c *gin.Context) {
 	uc := &api.UserClaims{}
 	_, err := jwt.ParseWithClaims(tokenStr, uc, KeyFunc)
 	if err != nil {
-		logger.Debug("token: %s", tokenStr)
-		logger.Error("ParseWithClaims: %s", err)
+		logger.Debugf("token: %s", tokenStr)
+		logger.Errorf("ParseWithClaims: %s", err)
 		resp := api.NewResponse(123, "invalid token", nil)
 		c.AbortWithStatusJSON(http.StatusBadRequest, resp)
 	}

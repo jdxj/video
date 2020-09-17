@@ -24,18 +24,18 @@ func initServer() {
 
 func StartServer() (err error) {
 	initServer()
-	logger.Info("initServer success")
+	logger.Infof("initServer success")
 
 	go func() {
-		logger.Info("ListenAndServe before")
+		logger.Infof("ListenAndServe before")
 
 		err := server.ListenAndServe()
 		if err != http.ErrServerClosed {
-			logger.Error("ListenAndServe: %s", err)
+			logger.Errorf("ListenAndServe: %s", err)
 			return
 		}
 
-		logger.Info("ListenAndServe after")
+		logger.Infof("ListenAndServe after")
 	}()
 	return
 }
